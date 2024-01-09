@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="wel">
+    <file>welbeing_3.png</file>
+    <file>featuring.png</file>
+    <file>featuring.png</file>
+    <file>welbeing_1.png</file>
+    <file>welbeing_2.png</file>
+  </qresource>
+</RCC>
