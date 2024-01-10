@@ -101,7 +101,7 @@ QPushButton {
              <string>Menu</string>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
+             <iconset>
               <normaloff>:/icons/icons_folder/align-justify.svg</normaloff>:/icons/icons_folder/align-justify.svg</iconset>
             </property>
             <property name="iconSize">
@@ -216,7 +216,7 @@ QPushButton {
                 <string>Item 1</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset>
                  <normaloff>:/icons/icons_folder/airplay.svg</normaloff>:/icons/icons_folder/airplay.svg</iconset>
                </property>
               </widget>
@@ -227,7 +227,7 @@ QPushButton {
                 <string>Item 2</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset>
                  <normaloff>:/icons/icons_folder/award.svg</normaloff>:/icons/icons_folder/award.svg</iconset>
                </property>
               </widget>
@@ -238,7 +238,7 @@ QPushButton {
                 <string>Item 3</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset>
                  <normaloff>:/icons/icons_folder/bar-chart.svg</normaloff>:/icons/icons_folder/bar-chart.svg</iconset>
                </property>
               </widget>
@@ -249,7 +249,7 @@ QPushButton {
                 <string>Item 4</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset>
                  <normaloff>:/icons/icons_folder/cloud-drizzle.svg</normaloff>:/icons/icons_folder/cloud-drizzle.svg</iconset>
                </property>
               </widget>
@@ -260,7 +260,7 @@ QPushButton {
                 <string>Item 5</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
+                <iconset>
                  <normaloff>:/icons/icons_folder/crosshair.svg</normaloff>:/icons/icons_folder/crosshair.svg</iconset>
                </property>
               </widget>
@@ -376,8 +376,14 @@ border-radius:5px
              <item>
               <widget class="QListWidget" name="tasksListWidget">
                <property name="styleSheet">
-                <string notr="true">background-color: rgb(255, 255, 255);</string>
+                <string notr="true">background-color: rgb(255, 255, 255);
+color: black;</string>
                </property>
+               <item>
+                <property name="text">
+                 <string>hello</string>
+                </property>
+               </item>
               </widget>
              </item>
              <item>

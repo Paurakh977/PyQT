@@ -206,8 +206,11 @@ class Ui_MainWindow(object):
         self.addButton.setObjectName("addButton")
         self.verticalLayout_5.addWidget(self.addButton)
         self.tasksListWidget = QtWidgets.QListWidget(self.frame_5)
-        self.tasksListWidget.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.tasksListWidget.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color: black;")
         self.tasksListWidget.setObjectName("tasksListWidget")
+        item = QtWidgets.QListWidgetItem()
+        self.tasksListWidget.addItem(item)
         self.verticalLayout_5.addWidget(self.tasksListWidget)
         self.saveButton = QtWidgets.QPushButton(self.frame_5)
         self.saveButton.setStyleSheet("background-color: rgb(85, 255, 255);\n"
@@ -307,6 +310,23 @@ class Ui_MainWindow(object):
         self.pushButton_5.setText(_translate("MainWindow", "Item 4"))
         self.pushButton_6.setText(_translate("MainWindow", "Item 5"))
         self.addButton.setText(_translate("MainWindow", "Add New"))
+        self.saveButton.setText(_translate("MainWindow", "Save Changes"))
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.pushButton.setText(_translate("MainWindow", "Menu"))
+        self.label.setText(_translate("MainWindow", "My app"))
+        self.pushButton_2.setText(_translate("MainWindow", "Item 1"))
+        self.pushButton_3.setText(_translate("MainWindow", "Item 2"))
+        self.pushButton_4.setText(_translate("MainWindow", "Item 3"))
+        self.pushButton_5.setText(_translate("MainWindow", "Item 4"))
+        self.pushButton_6.setText(_translate("MainWindow", "Item 5"))
+        self.addButton.setText(_translate("MainWindow", "Add New"))
+        __sortingEnabled = self.tasksListWidget.isSortingEnabled()
+        self.tasksListWidget.setSortingEnabled(False)
+        item = self.tasksListWidget.item(0)
+        item.setText(_translate("MainWindow", "hello"))
+        self.tasksListWidget.setSortingEnabled(__sortingEnabled)
         self.saveButton.setText(_translate("MainWindow", "Save Changes"))
 import icons_rc
 
