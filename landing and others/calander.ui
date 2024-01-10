@@ -303,7 +303,8 @@ QPushButton {
                <property name="styleSheet">
                 <string notr="true">color: rgb(85, 255, 255);
 font-size:20px;
-font-weight:700;</string>
+font-weight:700;
+font-family: 'Istok Web';</string>
                </property>
               </widget>
              </item>
@@ -370,6 +371,25 @@ border-radius:5px
                </property>
                <property name="autoDefault">
                 <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEdit">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+color:black;
+font-family: 'Istok Web';
+border-radius:5px;
+letter-spacing:1px;
+font-szie:6px;
+padding-left:4px</string>
                </property>
               </widget>
              </item>

@@ -9,7 +9,12 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5 import QtCore, QtGui, QtWidgets
+import sqlite3
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QListWidgetItem
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QMessageBox
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -171,7 +176,8 @@ class Ui_MainWindow(object):
         self.calendarWidget = QtWidgets.QCalendarWidget(self.frame_6)
         self.calendarWidget.setStyleSheet("color: rgb(85, 255, 255);\n"
 "font-size:20px;\n"
-"font-weight:700;")
+"font-weight:700;\n"
+"font-family: \'Istok Web\';")
         self.calendarWidget.setObjectName("calendarWidget")
         self.verticalLayout_6.addWidget(self.calendarWidget)
         self.gridLayout.addWidget(self.frame_6, 0, 0, 1, 1)
@@ -205,6 +211,17 @@ class Ui_MainWindow(object):
         self.addButton.setAutoDefault(False)
         self.addButton.setObjectName("addButton")
         self.verticalLayout_5.addWidget(self.addButton)
+        self.lineEdit = QtWidgets.QLineEdit(self.frame_5)
+        self.lineEdit.setMinimumSize(QtCore.QSize(0, 20))
+        self.lineEdit.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"color:black;\n"
+"font-family: \'Istok Web\';\n"
+"border-radius:5px;\n"
+"letter-spacing:1px;\n"
+"font-szie:6px;\n"
+"padding-left:4px")
+        self.lineEdit.setObjectName("lineEdit")
+        self.verticalLayout_5.addWidget(self.lineEdit)
         self.tasksListWidget = QtWidgets.QListWidget(self.frame_5)
         self.tasksListWidget.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "color: black;")
@@ -213,6 +230,8 @@ class Ui_MainWindow(object):
         self.tasksListWidget.addItem(item)
         self.verticalLayout_5.addWidget(self.tasksListWidget)
         self.saveButton = QtWidgets.QPushButton(self.frame_5)
+        self.taskLineEdit = QtWidgets.QLineEdit(self.frame_5)
+        self.verticalLayout_5.addWidget(self.taskLineEdit)
         self.saveButton.setStyleSheet("background-color: rgb(85, 255, 255);\n"
 "\n"
 "\n"
@@ -254,7 +273,71 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.conn = sqlite3.connect('C:\\Users\\pande\\OneDrive\\Desktop\\Feb-7 Project\\landing and others\\data.db')
+        self.cursor = self.conn.cursor()
+        self.calendarWidget.selectionChanged.connect(self.calendarDateChanged)
+        self.calendarDateChanged()
+        self.saveButton.clicked.connect(self.saveChanges)
+        self.addButton.clicked.connect(self.addNewTask)
+    def calendarDateChanged(self):
+            print("The calendar date was changed.")
+            dateSelected = self.calendarWidget.selectedDate().toPyDate()
+            print("Date selected:", dateSelected)
+            self.updateTaskList(dateSelected)
 
+    def updateTaskList(self, date):
+        self.tasksListWidget.clear()
+
+        query = "SELECT task, completed FROM tasks WHERE date = ?"
+        row = (date,)
+        results = self.cursor.execute(query, row).fetchall()
+        for result in results:
+            item = QListWidgetItem(str(result[0]))
+            item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
+            if result[1] == "YES":
+                item.setCheckState(Qt.Checked)
+            elif result[1] == "NO":
+                item.setCheckState(Qt.Unchecked)
+            self.tasksListWidget.addItem(item)
+
+    def saveChanges(self):
+        date = self.calendarWidget.selectedDate().toPyDate()
+
+        for i in range(self.tasksListWidget.count()):
+            item = self.tasksListWidget.item(i)
+            task = item.text()
+            if item.checkState() == Qt.Checked:
+                query = "UPDATE tasks SET completed = 'YES' WHERE task = ? AND date = ?"
+            else:
+                query = "UPDATE tasks SET completed = 'NO' WHERE task = ? AND date = ?"
+            row = (task, date,)
+            self.cursor.execute(query, row)
+        self.conn.commit()
+
+        messageBox = QMessageBox()
+        messageBox.setText("Changes saved.")
+        messageBox.setStandardButtons(QMessageBox.Ok)
+        messageBox.exec()
+
+    def addNewTask(self):
+        newTask = str(self.lineEdit.text())  # Use self.lineEdit.text() instead of self.taskLineEdit.text()
+        date = self.calendarWidget.selectedDate().toPyDate()
+
+        query = "INSERT INTO tasks(task, completed, date) VALUES (?,?,?)"
+        row = (newTask, "NO", date,)
+
+        try:
+            self.cursor.execute(query, row)
+            self.conn.commit()
+            self.updateTaskList(date)
+            self.lineEdit.clear()  # Clear the lineEdit widget
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+
+    def closeEvent(self, event):
+        self.conn.close()
+        event.accept()
     def toggle_menu(self):
         # Toggle the menu state
         self.menu_expanded = not self.menu_expanded
@@ -299,18 +382,7 @@ class Ui_MainWindow(object):
         self.pushButton_10.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_11.setText(_translate("MainWindow", "PushButton"))
         self.pushButton_8.setText(_translate("MainWindow", "PushButton"))
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "Menu"))
-        self.label.setText(_translate("MainWindow", "My app"))
-        self.pushButton_2.setText(_translate("MainWindow", "Item 1"))
-        self.pushButton_3.setText(_translate("MainWindow", "Item 2"))
-        self.pushButton_4.setText(_translate("MainWindow", "Item 3"))
-        self.pushButton_5.setText(_translate("MainWindow", "Item 4"))
-        self.pushButton_6.setText(_translate("MainWindow", "Item 5"))
-        self.addButton.setText(_translate("MainWindow", "Add New"))
-        self.saveButton.setText(_translate("MainWindow", "Save Changes"))
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
