@@ -318,7 +318,11 @@ class Ui_MainWindow(object):
         self.gridLayout_4 = QtWidgets.QGridLayout(self.frame_6)
         self.gridLayout_4.setObjectName("gridLayout_4")
         self.calendarWidget = QtWidgets.QCalendarWidget(self.frame_6)
-        self.calendarWidget.setStyleSheet("color:red;")
+        self.calendarWidget.setStyleSheet("color: rgb(85, 255, 255);\n"
+"font-size:20px;\n"
+"font-weight:700;\n"
+"font-family: \'Istok Web\';\n"
+"alternate-background-color: rgb(0, 0, 0);")
         self.calendarWidget.setObjectName("calendarWidget")
         self.gridLayout_4.addWidget(self.calendarWidget, 0, 0, 1, 1)
         self.verticalLayout_6.addWidget(self.frame_6)

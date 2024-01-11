@@ -177,7 +177,8 @@ class Ui_MainWindow(object):
         self.calendarWidget.setStyleSheet("color: rgb(85, 255, 255);\n"
 "font-size:20px;\n"
 "font-weight:700;\n"
-"font-family: \'Istok Web\';")
+"font-family: \'Istok Web\';\n"
+"alternate-background-color: rgb(0, 0, 0);")
         self.calendarWidget.setObjectName("calendarWidget")
         self.verticalLayout_6.addWidget(self.calendarWidget)
         self.gridLayout.addWidget(self.frame_6, 0, 0, 1, 1)
