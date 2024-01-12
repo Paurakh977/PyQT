@@ -9,9 +9,14 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import login
 
-
-class Ui_MainWindow(object):
+class signup_Main_Window(object):
+    def open_login(self):
+            self.window=QtWidgets.QMainWindow()
+            self.ui=login.login_MainWindow()
+            self.ui.setupUi(self.window)
+            self.window.show()    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1200, 900)
@@ -221,7 +226,7 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-
+        self.Login.clicked.connect(self.open_login)
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -243,7 +248,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = signup_Main_Window()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
