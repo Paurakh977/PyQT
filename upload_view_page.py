@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'table.ui'
+# Form implementation generated from reading ui file '.\upload_view_page.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
