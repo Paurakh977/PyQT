@@ -379,7 +379,7 @@ font-size:25px;</string>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
-            <item>
+            <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="label_6">
               <property name="maximumSize">
                <size>
@@ -418,7 +418,7 @@ font-size:30px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_7">
+             <widget class="QPushButton" name="upload_physics">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
@@ -433,7 +433,7 @@ font-size:30px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_8">
+             <widget class="QPushButton" name="view_physics">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
@@ -451,7 +451,7 @@ font-size:30px;</string>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_12">
-            <item>
+            <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="label_20">
               <property name="maximumSize">
                <size>
@@ -490,7 +490,7 @@ font-size:30px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_21">
+             <widget class="QPushButton" name="upload_chemistry">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
@@ -505,7 +505,7 @@ font-size:30px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_22">
+             <widget class="QPushButton" name="view_chemistry">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
@@ -523,7 +523,7 @@ font-size:30px;</string>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_13">
-            <item>
+            <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="label_22">
               <property name="maximumSize">
                <size>
@@ -562,7 +562,7 @@ font-family: &quot;Times New Roman&quot;, Times, serif;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_23">
+             <widget class="QPushButton" name="upload_maths">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
@@ -577,7 +577,7 @@ font-size:30px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_24">
+             <widget class="QPushButton" name="view_maths">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
@@ -595,7 +595,7 @@ font-size:30px;</string>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_14">
-            <item>
+            <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="label_24">
               <property name="maximumSize">
                <size>
@@ -641,7 +641,7 @@ font-size:30px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_25">
+             <widget class="QPushButton" name="upload_java">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
@@ -657,7 +657,7 @@ font-size:30px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_26">
+             <widget class="QPushButton" name="view_java">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
@@ -675,7 +675,7 @@ font-size:30px;</string>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_15">
-            <item>
+            <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="label_26">
               <property name="maximumSize">
                <size>
@@ -714,7 +714,7 @@ font-size:30px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_27">
+             <widget class="QPushButton" name="upload_python">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
@@ -729,7 +729,7 @@ font-size:30px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_28">
+             <widget class="QPushButton" name="view_python">
               <property name="styleSheet">
                <string notr="true">background-color: Transparent;
 color: white;
