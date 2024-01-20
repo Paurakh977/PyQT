@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="subs">
+    <file>../../../../Downloads/phys.png</file>
+    <file>../../../../Downloads/codin.jpg</file>
+    <file>../../../../Downloads/maths.png</file>
+    <file>../../../../Downloads/chem.png</file>
+  </qresource>
+</RCC>
