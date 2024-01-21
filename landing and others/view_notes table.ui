@@ -357,7 +357,7 @@ font-size:25px;</string>
               </property>
              </widget>
             </item>
-            <item alignment="Qt::AlignRight">
+            <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="download_coln">
               <property name="maximumSize">
                <size>
