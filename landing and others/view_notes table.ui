@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>586</width>
-    <height>370</height>
+    <width>749</width>
+    <height>449</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,7 +47,7 @@ QPushButton {
 </string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
-    <item alignment="Qt::AlignTop">
+    <item>
      <widget class="QFrame" name="header">
       <property name="minimumSize">
        <size>
@@ -279,60 +279,267 @@ QPushButton {
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="styleSheet">
+          <string notr="true">
+color:white;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+
+</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_6">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QFrame" name="frame_for_objects">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-border-radius:7px;</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <item>
-              <widget class="QTableWidget" name="tableWidget">
-               <property name="styleSheet">
-                <string notr="true">font-family: 'Istok Web'; 
-color:black;
-font-size:26px;</string>
-               </property>
-               <column>
-                <property name="text">
-                 <string>Title</string>
-                </property>
-               </column>
-               <column>
-                <property name="text">
-                 <string>Chapter</string>
-                </property>
-               </column>
-               <column>
-                <property name="text">
-                 <string>Page</string>
-                </property>
-               </column>
-               <column>
-                <property name="text">
-                 <string>Download</string>
-                </property>
-               </column>
-              </widget>
-             </item>
-            </layout>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="sn_coln">
+              <property name="maximumSize">
+               <size>
+                <width>45</width>
+                <height>22</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: white;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:25px;
+</string>
+              </property>
+              <property name="text">
+               <string>S.N</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QLabel" name="title_coln">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>22</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: white;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:25px;
+</string>
+              </property>
+              <property name="text">
+               <string>Title</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="chapter_coln">
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>22</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: white;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:25px;</string>
+              </property>
+              <property name="text">
+               <string>Chapter No:</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignRight">
+             <widget class="QLabel" name="download_coln">
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>22</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: white;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:25px;</string>
+              </property>
+              <property name="text">
+               <string>Download</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QLabel" name="sn_label">
+              <property name="maximumSize">
+               <size>
+                <width>20</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: Transparent;
+color: white;
+font-size:30px;</string>
+              </property>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="title_label">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: Transparent;
+color: white;
+ border-bottom: 1px solid white;
+border-radius:none;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:30px;</string>
+              </property>
+              <property name="text">
+               <string>Theromo</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="Chapter_label">
+              <property name="maximumSize">
+               <size>
+                <width>20</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: Transparent;
+color: white;
+ border-bottom: 1px solid white;
+border-radius:none;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:30px;</string>
+              </property>
+              <property name="text">
+               <string>4</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="download_button">
+              <property name="styleSheet">
+               <string notr="true">background-color: Transparent;
+color: white;
+ border-bottom: 1px solid white;
+border-radius:none;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:30px;</string>
+              </property>
+              <property name="text">
+               <string>Click Here !</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QLabel" name="label_15">
+              <property name="maximumSize">
+               <size>
+                <width>20</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: Transparent;
+color: white;
+font-size:30px;</string>
+              </property>
+              <property name="text">
+               <string>1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_16">
+              <property name="minimumSize">
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:30px;
+
+ border-bottom: 1px solid white;
+border-radius:none;
+</string>
+              </property>
+              <property name="text">
+               <string>Theromo</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_17">
+              <property name="maximumSize">
+               <size>
+                <width>20</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: Transparent;
+color: white;
+ border-bottom: 1px solid white;
+border-radius:none;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:30px;</string>
+              </property>
+              <property name="text">
+               <string>4</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="view_physics_4">
+              <property name="styleSheet">
+               <string notr="true">background-color: Transparent;
+color: white;
+ border-bottom: 1px solid white;
+border-radius:none;
+font-family: &quot;Times New Roman&quot;, Times, serif;
+font-size:30px;</string>
+              </property>
+              <property name="text">
+               <string>Click Here !</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
