@@ -101,8 +101,8 @@ QPushButton {
              <string>Menu</string>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
-              <normaloff>:/icons/icons_folder/align-justify.svg</normaloff>:/icons/icons_folder/align-justify.svg</iconset>
+             <iconset>
+              <normaloff>:/icons/New folder/align-justify.svg</normaloff>:/icons/New folder/align-justify.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -285,53 +285,65 @@ QPushButton {
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_6">
+         <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QFrame" name="frame_for_objects">
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
+           <widget class="QTableWidget" name="tableWidget">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
-border-radius:7px;</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_5">
-             <item>
-              <widget class="QTableWidget" name="tableWidget">
-               <property name="styleSheet">
-                <string notr="true">font-family: 'Istok Web'; 
+
 color:black;
-font-size:26px;</string>
-               </property>
-               <column>
-                <property name="text">
-                 <string>Title</string>
-                </property>
-               </column>
-               <column>
-                <property name="text">
-                 <string>Chapter</string>
-                </property>
-               </column>
-               <column>
-                <property name="text">
-                 <string>Page</string>
-                </property>
-               </column>
-               <column>
-                <property name="text">
-                 <string>Download</string>
-                </property>
-               </column>
-              </widget>
-             </item>
-            </layout>
+border-radius:7px;
+font-family: 'Istok Web'; 
+</string>
+            </property>
+            <column>
+             <property name="text">
+              <string>Title</string>
+             </property>
+             <property name="font">
+              <font>
+               <family>Palatino Linotype</family>
+               <pointsize>16</pointsize>
+               <italic>true</italic>
+              </font>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Page No:</string>
+             </property>
+             <property name="font">
+              <font>
+               <family>Palatino Linotype</family>
+               <pointsize>16</pointsize>
+               <italic>true</italic>
+              </font>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Date Uploaded</string>
+             </property>
+             <property name="font">
+              <font>
+               <family>Palatino Linotype</family>
+               <pointsize>16</pointsize>
+               <italic>true</italic>
+              </font>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Download Files</string>
+             </property>
+             <property name="font">
+              <font>
+               <family>Palatino Linotype</family>
+               <pointsize>16</pointsize>
+               <italic>true</italic>
+              </font>
+             </property>
+            </column>
            </widget>
           </item>
          </layout>
