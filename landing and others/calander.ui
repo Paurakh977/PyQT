@@ -101,7 +101,7 @@ QPushButton {
              <string>Menu</string>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="icons.qrc">
               <normaloff>:/icons/icons_folder/align-justify.svg</normaloff>:/icons/icons_folder/align-justify.svg</iconset>
             </property>
             <property name="iconSize">
@@ -216,7 +216,7 @@ QPushButton {
                 <string>Item 1</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="icons.qrc">
                  <normaloff>:/icons/icons_folder/airplay.svg</normaloff>:/icons/icons_folder/airplay.svg</iconset>
                </property>
               </widget>
@@ -249,7 +249,7 @@ QPushButton {
                 <string>Item 4</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="icons.qrc">
                  <normaloff>:/icons/icons_folder/cloud-drizzle.svg</normaloff>:/icons/icons_folder/cloud-drizzle.svg</iconset>
                </property>
               </widget>
@@ -260,7 +260,7 @@ QPushButton {
                 <string>Item 5</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="icons.qrc">
                  <normaloff>:/icons/icons_folder/crosshair.svg</normaloff>:/icons/icons_folder/crosshair.svg</iconset>
                </property>
               </widget>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1070</width>
-    <height>564</height>
+    <width>1045</width>
+    <height>644</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -292,6 +292,12 @@ QPushButton {
              <layout class="QVBoxLayout" name="verticalLayout_5">
               <item>
                <widget class="QFrame" name="frame_11">
+                <property name="minimumSize">
+                 <size>
+                  <width>500</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(255, 255, 255);</string>
                 </property>
@@ -301,44 +307,68 @@ QPushButton {
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_10">
+                <layout class="QHBoxLayout" name="horizontalLayout_6">
                  <item>
-                  <widget class="QPushButton" name="pushButton_17">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(255, 0, 0);</string>
-                   </property>
-                   <property name="text">
-                    <string>PushButton</string>
-                   </property>
-                  </widget>
+                  <layout class="QVBoxLayout" name="verticalLayout_10">
+                   <item>
+                    <widget class="QLabel" name="Welcome">
+                     <property name="styleSheet">
+                      <string notr="true">position: absolute;
+width: 310px;
+height: 80px;
+
+
+font-family: 'Istok Web';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 92px;
+
+color: #7A999C;
+background : transparent;</string>
+                     </property>
+                     <property name="text">
+                      <string>Welcome</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="Welcome_2">
+                     <property name="styleSheet">
+                      <string notr="true">position: absolute;
+width: 310px;
+height: 80px;
+
+
+font-family: 'Istok Web';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 92px;
+
+color: #7A999C;
+background : transparent;</string>
+                     </property>
+                     <property name="text">
+                      <string>Username</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_18">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(255, 0, 0);</string>
+                  <widget class="QFrame" name="frame_12">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
                    </property>
-                   <property name="text">
-                    <string>PushButton</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_19">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(255, 0, 0);</string>
-                   </property>
-                   <property name="text">
-                    <string>PushButton</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_16">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(255, 0, 0);</string>
-                   </property>
-                   <property name="text">
-                    <string>PushButton</string>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
                    </property>
                   </widget>
                  </item>
@@ -373,7 +403,7 @@ QPushButton {
                     <widget class="QLabel" name="label_4">
                      <property name="styleSheet">
                       <string notr="true">color:black;
-font-size:10px;
+font-size:20px;
 font-family: 'Istok Web';
 font-style: normal;
 font-weight: 600;</string>
@@ -412,7 +442,7 @@ font-weight: 600;</string>
                     <widget class="QLabel" name="label_5">
                      <property name="styleSheet">
                       <string notr="true">color:black;
-font-size:10px;
+font-size:20px;
 font-family: 'Istok Web';
 font-style: normal;
 font-weight: 600;</string>
@@ -451,7 +481,7 @@ font-weight: 600;</string>
                     <widget class="QLabel" name="label_7">
                      <property name="styleSheet">
                       <string notr="true">color:black;
-font-size:10px;
+font-size:20px;
 font-family: 'Istok Web';
 font-style: normal;
 font-weight: 600;</string>
@@ -468,6 +498,12 @@ font-weight: 600;</string>
               </item>
               <item>
                <widget class="QFrame" name="frame_7">
+                <property name="minimumSize">
+                 <size>
+                  <width>500</width>
+                  <height>0</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(255, 255, 255);</string>
                 </property>
@@ -526,7 +562,13 @@ font-weight: 600;</string>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_6">
               <item>
-               <widget class="QFrame" name="frame_5">
+               <widget class="QFrame" name="bar_graph_frame">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>400</height>
+                 </size>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">background-color: rgb(255, 255, 255);</string>
                 </property>
@@ -536,58 +578,7 @@ font-weight: 600;</string>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_8">
-                 <item>
-                  <widget class="QPushButton" name="pushButton_9">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(0, 0, 0);</string>
-                   </property>
-                   <property name="text">
-                    <string>PushButton</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_7">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(0, 0, 0);</string>
-                   </property>
-                   <property name="text">
-                    <string>PushButton</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_10">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(0, 0, 0);</string>
-                   </property>
-                   <property name="text">
-                    <string>PushButton</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_11">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(0, 0, 0);</string>
-                   </property>
-                   <property name="text">
-                    <string>PushButton</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_8">
-                   <property name="styleSheet">
-                    <string notr="true">background-color: rgb(0, 0, 0);</string>
-                   </property>
-                   <property name="text">
-                    <string>PushButton</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                <layout class="QVBoxLayout" name="verticalLayout_8"/>
                </widget>
               </item>
               <item>
@@ -605,7 +596,10 @@ font-weight: 600;</string>
                  <item row="0" column="0">
                   <widget class="QCalendarWidget" name="calendarWidget">
                    <property name="styleSheet">
-                    <string notr="true">color:red;</string>
+                    <string notr="true">color: rgb(85, 255, 255);
+font-weight:700;
+font-family: 'Istok Web';
+alternate-background-color: rgb(0, 0, 0);</string>
                    </property>
                   </widget>
                  </item>
