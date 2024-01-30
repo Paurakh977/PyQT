@@ -334,7 +334,7 @@ class Ui_MainWindow(object):
         self.timer.start(1000)  # Update every second
 
     
-        
+
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.bar_graph_frame)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.verticalLayout_6.addWidget(self.bar_graph_frame)

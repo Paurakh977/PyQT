@@ -9,7 +9,18 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+import icons_rc
+import welbeings_rc
+from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+import pygetwindow as gw
+import sqlite3
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QFrame
+from PyQt5.QtCore import QTimer
+from PyQt5.QtGui import QPixmap
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+import matplotlib.pyplot as plt
+import sqlite3
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -230,6 +241,14 @@ class Ui_MainWindow(object):
         self.bar_graph_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.bar_graph_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.bar_graph_frame.setObjectName("bar_graph_frame")
+        self.bar_graph_layout = QVBoxLayout(self.bar_graph_frame)
+        self.bar_graph_frame.setLayout(self.bar_graph_layout)
+        self.conn = sqlite3.connect('app_screen_time.db')
+        self.create_table()
+        self.timer = QTimer(MainWindow)
+        self.timer.timeout.connect(self.update_data_and_plot)
+        self.timer.start(1000)
+        
         self.gridLayout.addWidget(self.bar_graph_frame, 0, 0, 2, 1)
         self.tasks_frame = QtWidgets.QFrame(self.main_body)
         self.tasks_frame.setMaximumSize(QtCore.QSize(490, 16777215))
@@ -254,7 +273,157 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.menu_expanded = False
 
+        # Connect the button click event to the toggle_menu function
+        self.pushButton.clicked.connect(self.toggle_menu)
+
+        # Set up the animation for the side menu
+        self.side_menu_animation = QtCore.QPropertyAnimation(self.side_menu, b"maximumWidth")
+        self.side_menu_animation.setDuration(300)
+
+        # Set up the central widget animation for overlay effect
+        self.central_widget_animation = QtCore.QPropertyAnimation(self.centralwidget, b"geometry")
+        self.central_widget_animation.setDuration(300)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def toggle_menu(self):
+        # Toggle the menu state
+        self.menu_expanded = not self.menu_expanded
+
+        # Define the target width for the side menu
+        target_width = 200 if self.menu_expanded else 0
+
+        # Update the side menu animation
+        self.side_menu_animation.setEndValue(target_width)
+        self.side_menu_animation.start()
+
+        # Update the central widget animation for overlay effect
+        if self.menu_expanded:
+            self.central_widget_animation.setEndValue(QtCore.QRect(200, 0, 586, 370))
+        else:
+            self.central_widget_animation.setEndValue(QtCore.QRect(0, 0, 586, 370))
+        self.central_widget_animation.start()
+
+    def create_table(self):
+        cursor = self.conn.cursor()
+        cursor.execute('''CREATE TABLE IF NOT EXISTS screen_time (
+                            app_name TEXT PRIMARY KEY,
+                            total_screen_time REAL
+                        )''')
+        self.conn.commit()
+
+    def track_and_store_screen_time(self):
+        active_window = gw.getActiveWindow()
+        if active_window is not None:
+            app_name = active_window.title
+            
+            if app_name != 'Main Window':  # Exclude details about the PyQt window
+                if "Google Chrome" in app_name or "Firefox" in app_name or "Microsoft​ Edge" in app_name:
+                    tab_name = self.get_browser_tab_name(active_window)
+                elif "Visual" in app_name:
+                        tab_name="Visual Studio"        
+                else:
+                    tab_name = app_name
+
+                cursor = self.conn.cursor()
+                cursor.execute("SELECT total_screen_time FROM screen_time WHERE app_name=?", (tab_name,))
+                row = cursor.fetchone()
+
+                if row:
+                    total_time = row[0] + 1  # Update every second
+                    cursor.execute("UPDATE screen_time SET total_screen_time=? WHERE app_name=?", (total_time, tab_name))
+                else:
+                    cursor.execute("INSERT INTO screen_time (app_name, total_screen_time) VALUES (?, ?)", (tab_name, 1))
+
+                self.conn.commit()
+
+    def get_browser_tab_name(self, window):
+        title = window.title
+        
+        if " - Google Chrome" in title:
+            tab_name = title.split(" - Google Chrome")[0]
+            if "- YouTube" in tab_name:
+                tab_name = "YouTube" 
+            elif "Chats" in tab_name or "Instagram" in tab_name:
+                tab_name = "Instagram" 
+            elif "Messenger" in tab_name or "Facebook" in tab_name:
+                tab_name = "Facebook"    
+            return tab_name
+        elif " - Mozilla Firefox" in title:
+            tab_name = title.split(" - Mozilla Firefox")[0]
+            if "- YouTube" in tab_name:
+                tab_name = "YouTube" 
+            elif "Chats" in tab_name or "Instagram" in tab_name:
+                tab_name = "Instagram" 
+            elif "Messenger" in tab_name or "Facebook" in tab_name:
+                tab_name = "Facebook"      
+            return tab_name
+        elif "Edge" in title:
+            tab_name = title.split(" - Microsoft Edge")[0]
+            if "- YouTube" in tab_name: 
+                tab_name = "YouTube" 
+            elif "Chats" in tab_name or "Instagram" in tab_name:
+                tab_name = "Instagram" 
+            elif "Messenger" in tab_name or "Facebook" in tab_name:
+                tab_name = "Facebook"       
+            return tab_name
+        elif "- Visual Studio Code" in title:
+                title="Visual Studio Code"
+                return title
+        else:
+            return title    
+
+    def format_time(self, seconds):
+        if seconds >= 3600:
+            hours = seconds // 3600
+            minutes = (seconds % 3600) // 60
+            return f"{hours}h {minutes}m"
+        elif seconds >= 60:
+            minutes = seconds // 60
+            return f"{minutes}m"
+        else:
+            return f"{seconds}s"
+
+    def update_data_and_plot(self):
+        self.track_and_store_screen_time()
+        self.plot_graph()
+
+    def plot_graph(self):
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT * FROM screen_time WHERE app_name != 'Application Monitor' ORDER BY total_screen_time DESC LIMIT 5")
+        data = cursor.fetchall()
+
+        apps = [row[0] for row in data]
+        times = [row[1] for row in data]
+
+        formatted_times = [self.format_time(time) for time in times]
+
+        fig, ax = plt.subplots(figsize=(8, 9))  # Larger figure size
+        bars = ax.bar(apps, times, color='skyblue')
+        ax.set_xlabel('Tabs/Applications', fontsize=10)
+        ax.set_ylabel('Total Screen Time', fontsize=10)  # Adjusted font size for y-label
+        ax.set_title('Top Tabs/Applications by Total Screen Time', fontsize=14)
+        plt.xticks(rotation=45, ha='right', fontsize=10)  # Adjusted font size for x-ticks
+        plt.yticks(fontsize=10)  # Adjusted font size for y-ticks
+
+        # Annotate bars with total time spent
+        for bar, time in zip(bars, formatted_times):
+                ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height(), f'{time}', ha='center', va='bottom', fontsize=12)
+
+        plt.tight_layout()
+        
+        # Clear the previous layout
+        for i in reversed(range(self.bar_graph_layout.count())):
+                self.bar_graph_layout.itemAt(i).widget().setParent(None)
+
+        # Embed the Matplotlib figure into the PyQt5 application
+        canvas = FigureCanvas(fig)
+        self.bar_graph_layout.addWidget(canvas)
+        canvas.draw()
+  
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -265,7 +434,7 @@ class Ui_MainWindow(object):
         self.pushButton_5.setText(_translate("MainWindow", "Reminder"))
         self.pushButton_6.setText(_translate("MainWindow", "Return"))
 import icons_rc
-
+    
 
 if __name__ == "__main__":
     import sys
