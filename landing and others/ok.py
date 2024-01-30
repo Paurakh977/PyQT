@@ -222,9 +222,30 @@ class Ui_MainWindow(object):
         self.main_body.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.main_body.setFrameShadow(QtWidgets.QFrame.Raised)
         self.main_body.setObjectName("main_body")
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.main_body)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-       
+        self.gridLayout = QtWidgets.QGridLayout(self.main_body)
+        self.gridLayout.setObjectName("gridLayout")
+        self.bar_graph_frame = QtWidgets.QFrame(self.main_body)
+        self.bar_graph_frame.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-radius:7px;")
+        self.bar_graph_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.bar_graph_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.bar_graph_frame.setObjectName("bar_graph_frame")
+        self.gridLayout.addWidget(self.bar_graph_frame, 0, 0, 2, 1)
+        self.tasks_frame = QtWidgets.QFrame(self.main_body)
+        self.tasks_frame.setMaximumSize(QtCore.QSize(490, 16777215))
+        self.tasks_frame.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-radius:7px;")
+        self.tasks_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.tasks_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.tasks_frame.setObjectName("tasks_frame")
+        self.gridLayout.addWidget(self.tasks_frame, 0, 1, 1, 1)
+        self.extra_frame = QtWidgets.QFrame(self.main_body)
+        self.extra_frame.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-radius:7px;")
+        self.extra_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.extra_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.extra_frame.setObjectName("extra_frame")
+        self.gridLayout.addWidget(self.extra_frame, 1, 1, 1, 1)
         self.horizontalLayout.addWidget(self.main_body)
         self.main_body.raise_()
         self.side_menu.raise_()
@@ -233,39 +254,6 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        self.menu_expanded = False
-
-        # Connect the button click event to the toggle_menu function
-        self.pushButton.clicked.connect(self.toggle_menu)
-
-        # Set up the animation for the side menu
-        self.side_menu_animation = QtCore.QPropertyAnimation(self.side_menu, b"maximumWidth")
-        self.side_menu_animation.setDuration(300)
-
-        # Set up the central widget animation for overlay effect
-        self.central_widget_animation = QtCore.QPropertyAnimation(self.centralwidget, b"geometry")
-        self.central_widget_animation.setDuration(300)
-
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-    def toggle_menu(self):
-        # Toggle the menu state
-        self.menu_expanded = not self.menu_expanded
-
-        # Define the target width for the side menu
-        target_width = 200 if self.menu_expanded else 0
-
-        # Update the side menu animation
-        self.side_menu_animation.setEndValue(target_width)
-        self.side_menu_animation.start()
-
-        # Update the central widget animation for overlay effect
-        if self.menu_expanded:
-            self.central_widget_animation.setEndValue(QtCore.QRect(200, 0, 586, 370))
-        else:
-            self.central_widget_animation.setEndValue(QtCore.QRect(0, 0, 586, 370))
-        self.central_widget_animation.start()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
