@@ -97,6 +97,9 @@ QPushButton {
               <height>30</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">
                 font-family: 'Istok Web';
@@ -230,6 +233,9 @@ QPushButton {
                  <height>80</height>
                 </size>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
                 font-family: 'Istok Web';
@@ -265,6 +271,9 @@ background-color:rgb(5, 171, 232	);
                  <width>0</width>
                  <height>80</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
@@ -308,6 +317,9 @@ background-color:rgb(5, 171, 232	);
                  <height>80</height>
                 </size>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
                 font-family: 'Istok Web';
@@ -343,6 +355,9 @@ background-color:rgb(5, 171, 232	);
                  <width>0</width>
                  <height>80</height>
                 </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {

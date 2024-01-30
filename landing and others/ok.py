@@ -64,6 +64,7 @@ class Ui_MainWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.frame)
         self.pushButton.setMinimumSize(QtCore.QSize(120, 60))
         self.pushButton.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton.setStyleSheet("\n"
 "                font-family: \'Istok Web\';\n"
 "                font-weight: 700;\n"
@@ -127,6 +128,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.pushButton_2 = QtWidgets.QPushButton(self.frame_4)
         self.pushButton_2.setMinimumSize(QtCore.QSize(0, 80))
+        self.pushButton_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_2.setStyleSheet("QPushButton {\n"
 "                font-family: \'Istok Web\';\n"
 "                font-weight: 700;\n"
@@ -146,6 +148,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.pushButton_2, 0, QtCore.Qt.AlignTop)
         self.pushButton_3 = QtWidgets.QPushButton(self.frame_4)
         self.pushButton_3.setMinimumSize(QtCore.QSize(0, 80))
+        self.pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_3.setStyleSheet("QPushButton {\n"
 "                font-family: \'Istok Web\';\n"
 "                font-weight: 700;\n"
@@ -170,6 +173,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.pushButton_5.sizePolicy().hasHeightForWidth())
         self.pushButton_5.setSizePolicy(sizePolicy)
         self.pushButton_5.setMinimumSize(QtCore.QSize(20, 80))
+        self.pushButton_5.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_5.setStyleSheet("QPushButton {\n"
 "                font-family: \'Istok Web\';\n"
 "                font-weight: 700;\n"
@@ -189,6 +193,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addWidget(self.pushButton_5, 0, QtCore.Qt.AlignTop)
         self.pushButton_6 = QtWidgets.QPushButton(self.frame_4)
         self.pushButton_6.setMinimumSize(QtCore.QSize(0, 80))
+        self.pushButton_6.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton_6.setStyleSheet("QPushButton {\n"
 "                font-family: \'Istok Web\';\n"
 "                font-weight: 700;\n"
@@ -219,10 +224,7 @@ class Ui_MainWindow(object):
         self.main_body.setObjectName("main_body")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.main_body)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.label_2 = QtWidgets.QLabel(self.main_body)
-        self.label_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_2.setObjectName("label_2")
-        self.horizontalLayout_4.addWidget(self.label_2)
+       
         self.horizontalLayout.addWidget(self.main_body)
         self.main_body.raise_()
         self.side_menu.raise_()
@@ -231,6 +233,39 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.menu_expanded = False
+
+        # Connect the button click event to the toggle_menu function
+        self.pushButton.clicked.connect(self.toggle_menu)
+
+        # Set up the animation for the side menu
+        self.side_menu_animation = QtCore.QPropertyAnimation(self.side_menu, b"maximumWidth")
+        self.side_menu_animation.setDuration(300)
+
+        # Set up the central widget animation for overlay effect
+        self.central_widget_animation = QtCore.QPropertyAnimation(self.centralwidget, b"geometry")
+        self.central_widget_animation.setDuration(300)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def toggle_menu(self):
+        # Toggle the menu state
+        self.menu_expanded = not self.menu_expanded
+
+        # Define the target width for the side menu
+        target_width = 200 if self.menu_expanded else 0
+
+        # Update the side menu animation
+        self.side_menu_animation.setEndValue(target_width)
+        self.side_menu_animation.start()
+
+        # Update the central widget animation for overlay effect
+        if self.menu_expanded:
+            self.central_widget_animation.setEndValue(QtCore.QRect(200, 0, 586, 370))
+        else:
+            self.central_widget_animation.setEndValue(QtCore.QRect(0, 0, 586, 370))
+        self.central_widget_animation.start()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -241,7 +276,6 @@ class Ui_MainWindow(object):
         self.pushButton_3.setText(_translate("MainWindow", "Report"))
         self.pushButton_5.setText(_translate("MainWindow", "Reminder"))
         self.pushButton_6.setText(_translate("MainWindow", "Return"))
-        self.label_2.setText(_translate("MainWindow", "Main - Body "))
 import icons_rc
 
 
